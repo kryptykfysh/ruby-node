@@ -1,5 +1,9 @@
 FROM ruby:2.3.1
 
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee /etc/apt/sources.list.d/postgres.list \
+  && apt-get install -y wget ca-certificates \
+  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+
 RUN apt-get update -qq \
   && apt-get install -y \
     build-essential \
@@ -7,7 +11,6 @@ RUN apt-get update -qq \
     nodejs \
     npm \
     nodejs-legacy \
-    postgresql-client \
     chrpath \
     libssl-dev \
     libxft-dev \
@@ -15,6 +18,8 @@ RUN apt-get update -qq \
     libfreetype6-dev \
     libfontconfig1 \
     libfontconfig1-dev \
+    postgresql-9.5 \
+    postgresql-client-9.5 \
   && apt-get clean \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/* \
