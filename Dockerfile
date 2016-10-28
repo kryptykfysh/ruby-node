@@ -18,8 +18,8 @@ RUN apt-get update -qq \
     libfreetype6-dev \
     libfontconfig1 \
     libfontconfig1-dev \
-    postgresql-9.5 \
-    postgresql-client-9.5 \
+    postgresql-9.6 \
+    postgresql-client-9.6 \
   && apt-get clean \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/* \
