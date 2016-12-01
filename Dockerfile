@@ -1,6 +1,6 @@
-FROM ruby:2.3.1
+FROM ruby:2.3.3
 
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee /etc/apt/sources.list.d/postgres.list \
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | tee /etc/apt/sources.list.d/postgres.list \
   && apt-get install -y wget ca-certificates \
   && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
@@ -26,8 +26,6 @@ RUN apt-get update -qq \
   && gem install bundler \
   && npm install npm -g \
   && npm install bower -g
-# RUN export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64" \
-#  && wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2 \
 COPY phantomjs-2.1.1-linux-x86_64.tar.bz2 ./
 RUN tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2 \
   && rm phantomjs-2.1.1-linux-x86_64.tar.bz2 \
